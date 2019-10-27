@@ -13,8 +13,8 @@
         }
 
         .root {
-            width: 1400px;
-            margin: auto;
+            margin-left: 10%;
+            margin-right: 10%;
         }
 
         .title {
@@ -33,40 +33,28 @@
         }
 
 
-        .flex-item:nth-child(1) {
+        .btnHome {
             order: 2;
-            flex: 1;
-            align-self: auto;
+            
         }
 
-        .flex-item:nth-child(2) {
+        .btnContract {
             order: 3;
-            flex: 1;
-            align-self: auto;
+           
         }
 
-        .flex-item:nth-child(3) {
+        .btnAbout {
             order: 4;
-            flex: 1;
-            align-self: auto;
+           
         }
 
-        .flex-item:nth-child(4) {
+        .btnPartners {
             order: 5;
-            flex: 1;
-            align-self: auto;
+           
         }
 
-        .flex-item:nth-child(5) {
-            order: 6;
-            flex: 7;
-            align-self: auto;
-        }
-
-        .flex-item:nth-child(6) {
+        .btnSign {
             order: 7;
-            flex: 1;
-            align-self: auto;
         }
 
         .btnNav {
@@ -75,6 +63,9 @@
             border: 0px;
             padding: 12px;
             margin: 10px;
+
+            flex: 1;
+            align-self: auto;
         }
 
         .inSearch {
@@ -83,30 +74,38 @@
             border: 0px;
             margin: 10px;
             opacity: .5;
+
+            flex: 7;
+            order: 6;  
         }
 
         .art {
             margin: 10px;
             background: rgb(255, 255, 255);
+
+            flex: 1;
         }
 
-        .description {
+        .subcontent {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flexRow{
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             align-items: stretch;
             justify-content: space-between;
-        }
+        }      
 
         .creator {
-            order: 1;
             flex: 1;
             align-self: auto;
             margin: 10px;
         }
 
         .comments {
-            order: 2;
             flex: 1;
             align-self: auto;
             text-align: right;
@@ -121,15 +120,6 @@
 
 
         @media screen and (min-width: 1000px) {
-
-            .nav {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-items: stretch;
-                justify-content: space-between;
-                /* Почему все кнопки растягиваются на весь экран без промежутков? + flex работает фигово когда есть большой img, приходится уменьшать картинку*/
-            }
 
             .content_1 {
                 width: 25%;
@@ -156,23 +146,28 @@
             }
 
             .content_1 {
-                order: 1;
                 flex: 1;
                 align-self: auto;
             }
 
             .group_1 {
-                order: 2;
                 flex: 3;
                 align-self: auto;
+
+                display: flex;
+                flex-direction: column;
             }
 
-            .content_2>.art {
+            .art {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 flex-wrap: nowrap;
                 align-items: stretch;
                 justify-content: space-between;
+            }
+
+            .content_2>.art {
+                flex-direction: row;
             }
 
             .content_2>.art>img {
@@ -183,8 +178,7 @@
                 /* Меньше не уменьшается, больше увеличивается?*/
             }
 
-            .content_2>.art>div {
-                order: 1;
+            .articleContent {
                 flex: 1;
                 align-self: auto;
 
@@ -195,19 +189,17 @@
                 justify-content: space-between;
             }
 
-            .content_2>.art>div>.artCont {
-                order: 1;
+            .articleContentNews {
                 flex: 1;
                 align-self: auto;
             }
 
-            .content_2>.art>div>.description {
-                order: 2;
+            .description {
                 flex: 1;
                 align-self: auto;
             }
 
-            .content_2>.art>div>.description>div {
+            .description>div {
                 align-self: flex-end;
                 /* почему она работает по др в родителе (description) */
             }
@@ -218,16 +210,15 @@
                 flex-wrap: nowrap;
                 align-items: stretch;
                 justify-content: space-between;
+                flex: 1;
             }
 
             .content_3 {
-                order: 1;
                 flex: 1;
                 align-self: auto;
             }
 
             .content_4 {
-                order: 1;
                 flex: 1;
                 align-self: auto;
             }
@@ -238,12 +229,8 @@
 
         @media screen and (max-width: 800px) {
 
-            .nav {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                align-items: stretch;
-                justify-content: space-between;
+            .navigation {                
+                flex-direction: column !important;               
                 /* Почему все кнопки растягиваются на весь экран без промежутков? + flex работает фигово когда есть большой img, приходится уменьшать картинку*/
             }
 
@@ -262,7 +249,7 @@
                 display: none;
             }
 
-            .flex-item:nth-child(6) {
+            .btnSign {
                 order: 1;
             }
 
@@ -277,118 +264,120 @@
 <body>
     <div class="root">
         <div class="title">Flexbox Layout</div>
-        <div class="nav">
-            <button class="btnNav flex-item">
+        <nav class="navigation flexRow">
+            <button class="btnNav btnHome">
                 Home
             </button>
-            <button class="btnNav flex-item">
+            <button class="btnNav btnContract">
                 Contacts
             </button>
-            <button class="btnNav flex-item">
+            <button class="btnNav btnAbout">
                 About Me
             </button>
-            <button class="btnNav flex-item">
+            <button class="btnNav btnPartners">
                 Partners
             </button>
-            <input type="text" class="inSearch flex-item" type="text">
-            <button class="btnNav flex-item">
+            <input type="text" class="inSearch" type="text">
+            <button class="btnNav btnSign">
                 Sign In
             </button>
-        </div>
-        <div class="content">
-            <div class="content_1">
-                <div class="art">
+        </nav>
+        <main class="content">
+            <article class="content_1 subcontent">
+                <section class="art">
                     <img src="../Task2/img/1.jpg" class="fullWidth" />
-                    <div class="artTitle">Hello world</div>
-                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики, котики,
-                        котики, котики, котики, котики, котики, котики, котики, котики, котики, котики, котики, котики,
-                        котики, котики, котики, котики, котики</div>
-                    <div class="description">
-                        <div class="creator">
-                            By kotik
-                        </div>
-                        <div class="comments">
-                            42 comments
-                        </div>
-                    </div>
-                </div>
-                <div class="art">
-                    <div class="artTitle">Hello world</div>
-                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики, котики
-                    </div>
-                    <div class="description">
-                        <div class="creator">
-                            By kotik
-                        </div>
-                        <div class="comments">
-                            42 comments
-                        </div>
-                    </div>
-                </div>
-                <div class="art">
-                    <div class="artTitle">Hello world</div>
-                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики, котики
-                    </div>
-                    <div class="description">
-                        <div class="creator">
-                            By kotik
-                        </div>
-                        <div class="comments">
-                            42 comments
-                        </div>
-                    </div>
-                </div>
-                <div class="art">
-                    <div class="artTitle">Hello world</div>
-                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики, котики
-                    </div>
-                    <div class="description">
-                        <div class="creator">
-                            By kotik
-                        </div>
-                        <div class="comments">
-                            42 comments
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group_1">
-                <div class="content_2">
-                    <div class="art">
-                        <img src="../Task2/img/2.jpg" class="fullHeight" />
-                        <div>
-                            <div class="artCont">
-                                <div class="artTitle">Hello world</div>
-                                <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики,
-                                    котики,
-                                    котики,
-                                    котики, котики, котики, котики, котики, котики, котики, котики, котики, котики,
-                                    котики,
-                                    котики,
-                                    котики, котики, котики, котики, котики</div>
-                            </div>
-                            <div class="description">
-                                <div class="creator">
-                                    By kotik
-                                </div>
-                                <div class="comments">
-                                    42 comments
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="group_2">
-                    <div class="content_3">
-                        <div class="art">
-                            <img src="../Task2/img/3.jpg" class="fullWidth" />
-                            <div class="artTitle">Hello world</div>
+                    <div class="articleContent">
+                        <div class="articleContentNews">
+                            <div class=" artTitle">Hello world</div>
                             <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики,
                                 котики,
                                 котики, котики, котики, котики, котики, котики, котики, котики, котики, котики, котики,
                                 котики,
                                 котики, котики, котики, котики, котики</div>
-                            <div class="description">
+                        </div>
+                        <div class="description flexRow">
+                            <div class="creator">
+                                By kotik
+                            </div>
+                            <div class="comments">
+                                42 comments
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="art">
+                    <div class="articleContent">
+                        <div class="articleContentNews">
+                            <div class="artTitle">Hello world</div>
+                            <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики,
+                                котики
+                            </div>
+                        </div>
+                        <div class="description flexRow">
+                            <div class="creator">
+                                By kotik
+                            </div>
+                            <div class="comments">
+                                42 comments
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="art">
+                    <div class="articleContent">
+                        <div class="articleContentNews">
+                            <div class="artTitle">Hello world</div>
+                            <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики,
+                                котики
+                            </div>
+                        </div>
+                        <div class="description flexRow">
+                            <div class="creator">
+                                By kotik
+                            </div>
+                            <div class="comments">
+                                42 comments
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="art">
+                    <div class="articleContent">
+                        <div class="articleContentNews">
+                            <div class="artTitle">Hello world</div>
+                            <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики,
+                                котики
+                            </div>
+                        </div>
+                        <div class="description flexRow">
+                            <div class="creator">
+                                By kotik
+                            </div>
+                            <div class="comments">
+                                42 comments
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+            <div class="group_1">
+                <article class="content_2 subcontent">
+                    <section class="art">
+                        <img src="../Task2/img/2.jpg" class="fullHeight" />
+                        <div class="articleContent">
+                            <div class="articleContentNews">
+                                <div class="articleContentNews">
+                                    <div class="artTitle">Hello world</div>
+                                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики,
+                                        котики,
+                                        котики,
+                                        котики, котики, котики, котики, котики, котики, котики, котики, котики, котики,
+                                        котики,
+                                        котики,
+                                        котики, котики, котики, котики, котики</div>
+                                </div>
+                            </div>
+                            <div class="description flexRow">
                                 <div class="creator">
                                     By kotik
                                 </div>
@@ -397,55 +386,97 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="content_4">
-                        <div class="art">
+                    </section>
+                </article>
+                <div class="group_2">
+                    <article class="content_3 subcontent">
+                        <section class="art">
+                            <img src="../Task2/img/3.jpg" class="fullWidth" />
+                            <div class="articleContent">
+                                <div class="articleContentNews">
+                                    <div class="artTitle">Hello world</div>
+                                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики,
+                                        котики,
+                                        котики,
+                                        котики, котики, котики, котики, котики, котики, котики, котики, котики, котики,
+                                        котики,
+                                        котики,
+                                        котики, котики, котики, котики, котики</div>
+                                </div>
+                                <div class="description flexRow">
+                                    <div class="creator">
+                                        By kotik
+                                    </div>
+                                    <div class="comments">
+                                        42 comments
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                    <article class="content_4 subcontent">
+                        <section class="art">
                             <img src="../Task2/img/4.jpg" class="fullWidth" />
-                            <div class="artTitle">Hello world</div>
-                            <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики,
-                                котики
-                            </div>
-                            <div class="description">
-                                <div class="creator">
-                                    By kotik
+                            <div class="articleContent">
+                                <div class="articleContentNews">
+                                    <div class="artTitle">Hello world</div>
+                                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики,
+                                        котики,
+                                        котики
+                                    </div>
                                 </div>
-                                <div class="comments">
-                                    42 comments
-                                </div>
-                            </div>
-                        </div>
-                        <div class="art">
-                            <div class="artTitle">Hello world</div>
-                            <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики,
-                                котики
-                            </div>
-                            <div class="description">
-                                <div class="creator">
-                                    By kotik
-                                </div>
-                                <div class="comments">
-                                    42 comments
+                                <div class="description flexRow">
+                                    <div class="creator">
+                                        By kotik
+                                    </div>
+                                    <div class="comments">
+                                        42 comments
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="art">
-                            <div class="artTitle">Hello world</div>
-                            <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики, котики,
-                                котики
-                            </div>
-                            <div class="description">
-                                <div class="creator">
-                                    By kotik
+                        </section>
+                        <section class="art">
+                            <div class="articleContent">
+                                <div class="articleContentNews">
+                                    <div class="artTitle">Hello world</div>
+                                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики,
+                                        котики,
+                                        котики
+                                    </div>
                                 </div>
-                                <div class="comments">
-                                    42 comments
+                                <div class="description flexRow">
+                                    <div class="creator">
+                                        By kotik
+                                    </div>
+                                    <div class="comments">
+                                        42 comments
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </section>
+                        <section class="art">
+                            <div class="articleContent">
+                                <div class="articleContentNews">
+                                    <div class="artTitle">Hello world</div>
+                                    <div class="artText">Котики, котики, котики, котики, котики, котики, котики, котики,
+                                        котики,
+                                        котики
+                                    </div>
+                                </div>
+                                <div class="description flexRow">
+                                    <div class="creator">
+                                        By kotik
+                                    </div>
+                                    <div class="comments">
+                                        42 comments
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
     </div>
     </div>
