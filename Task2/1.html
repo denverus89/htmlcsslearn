@@ -117,7 +117,40 @@
             margin-top: 0px;
         }
 
+        .description>div {
+                align-self: flex-end;
+                /* почему она работает по др в родителе (description) */
+            }
 
+            .articleContent {
+                flex: 1;
+                align-self: auto;
+
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-items: stretch;
+                justify-content: space-between;
+                height: 100%;
+            }
+
+            .articleContentNews {
+                flex: 1;
+                align-self: auto;
+            }
+
+            .description {
+                flex: 1;
+                align-self: auto;
+            }    
+
+            .art {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-items: stretch;
+                justify-content: space-between;
+            }
 
         @media screen and (min-width: 1000px) {
 
@@ -158,13 +191,7 @@
                 flex-direction: column;
             }
 
-            .art {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                align-items: stretch;
-                justify-content: space-between;
-            }
+          
 
             .content_2>.art {
                 flex-direction: row;
@@ -176,33 +203,7 @@
                 align-self: auto;
                 width: 50%;
                 /* Меньше не уменьшается, больше увеличивается?*/
-            }
-
-            .articleContent {
-                flex: 1;
-                align-self: auto;
-
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                align-items: stretch;
-                justify-content: space-between;
-            }
-
-            .articleContentNews {
-                flex: 1;
-                align-self: auto;
-            }
-
-            .description {
-                flex: 1;
-                align-self: auto;
-            }
-
-            .description>div {
-                align-self: flex-end;
-                /* почему она работает по др в родителе (description) */
-            }
+            }                    
 
             .group_2 {
                 display: flex;
@@ -225,6 +226,47 @@
 
 
 
+        }
+
+        @media screen and (min-width: 800px)  and (max-width: 999px) {
+            .content {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: stretch;
+                justify-content: space-between;
+            }
+
+            .content_1 {
+                flex: 1;
+                align-self: auto;
+            }
+
+            .group_1 {
+                flex: 1;
+                align-self: auto;
+                width: 100%;
+            }
+
+            .root{
+                margin: 0px;
+            }
+
+            img{
+                width: 100%;
+            }
+
+            .group_2 {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: stretch;
+                justify-content: space-between;
+            }
+
+            .btnNav {
+                padding: 5px;
+            }
         }
 
         @media screen and (max-width: 800px) {
